@@ -92,7 +92,7 @@ LEFT OUTER JOIN dept_emp de
 LEFT OUTER JOIN departments d
 	ON de.department_id = d.department_id
 WHERE
-	de.department_id = 'd007'
+	d.department_name = 'Sales'
 ORDER BY
 	e.employee_no;
 
@@ -111,8 +111,7 @@ LEFT OUTER JOIN dept_emp de
 LEFT OUTER JOIN departments d
 	ON de.department_id = d.department_id
 WHERE
-	de.department_id = 'd007' 
-	OR de.department_id = 'd005'
+	d.department_name IN ('Sales', 'Development')
 ORDER BY
 	e.employee_no;
 
