@@ -18,7 +18,9 @@ To access the data from jupyter notebook, one needs configure username and passw
     username='username'  
     password='password'
 
+Since there are no null values in the current data even after the join, I have commented out the fillna logic. Depending upon the business requirement, this would be updated.
+
 Based on the analysis done as part of Jupyter notebook, we can see 
 
-- Most common salary range of employees to be between 40,000 USD and 50,000 USD.
+- the most common salary range of employees to be between 40,000 USD and 50,000 USD.
 - there are 7 job titles in the company with the average salary of Staff and Senior Staff being almost same.
