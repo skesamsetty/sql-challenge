@@ -126,3 +126,6 @@ GROUP BY
 	last_name
 ORDER BY
 	employee_count DESC;
+	
+SELECT * FROM employees 
+	ORDER BY hire_date desc

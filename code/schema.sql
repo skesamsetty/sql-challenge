@@ -1,17 +1,17 @@
 ﻿--------------------------------------------------------------------------	
 -- Create the titles table, with a primary id and a title
 --------------------------------------------------------------------------	
-DROP TABLE IF EXISTS titles;
+DROP TABLE IF EXISTS title;
 
-CREATE TABLE titles
+CREATE TABLE title
 (
 	title_id	CHAR(5) PRIMARY KEY,
 	title 		VARCHAR(25)
 );
-COMMENT ON COLUMN titles.title
+COMMENT ON COLUMN title.title
     IS 'Job Title';
 --------------------------------------------------------------------------
--- SELECT * FROM titles;
+-- SELECT * FROM title;
 --------------------------------------------------------------------------	
 --------------------------------------------------------------------------	
 -- Create an employees table, with the following: 
@@ -32,12 +32,12 @@ CREATE TYPE gender AS ENUM (
     ''
 );
 --------------------------------------------------------------------------	
-DROP TABLE IF EXISTS employees;
+DROP TABLE IF EXISTS employee;
 
-CREATE TABLE employees
+CREATE TABLE employee
 (
 	employee_no 		INT 	PRIMARY KEY,
-	employee_title_id 	CHAR(5) REFERENCES titles(title_id),
+	employee_title_id 	CHAR(5) REFERENCES title(title_id),
 	date_of_birth 		DATE,
 	first_name 			VARCHAR(20),
 	last_name 			VARCHAR(20),
@@ -45,7 +45,7 @@ CREATE TABLE employees
 	hire_date			DATE
 );
 --------------------------------------------------------------------------
--- SELECT * FROM employees;
+-- SELECT * FROM employee;
 --------------------------------------------------------------------------	
 --------------------------------------------------------------------------	
 -- Create an departments table, with the following: 
@@ -53,15 +53,15 @@ CREATE TABLE employees
 --    department name
 -- set the primary key relationships accordingly
 --------------------------------------------------------------------------	
-DROP TABLE IF EXISTS departments;
+DROP TABLE IF EXISTS department;
 
-CREATE TABLE departments
+CREATE TABLE department
 (
 	department_id	CHAR(4) 	PRIMARY KEY,
 	department_name	VARCHAR(25)
 );
 --------------------------------------------------------------------------
--- SELECT * FROM departments;
+-- SELECT * FROM department;
 --------------------------------------------------------------------------	
 --------------------------------------------------------------------------	
 -- Create an dept_manager table, with the following: 
@@ -73,8 +73,9 @@ DROP TABLE IF EXISTS dept_manager;
 
 CREATE TABLE dept_manager
 (
-	department_id 	CHAR(5) REFERENCES departments(department_id),
-	employee_no		INT		REFERENCES employees(employee_no)
+	department_id 	CHAR(5) REFERENCES department(department_id),
+	employee_no		INT		REFERENCES employee(employee_no),
+	PRIMARY KEY(department_id, employee_no)
 );
 --------------------------------------------------------------------------
 -- SELECT * FROM dept_manager;
@@ -89,8 +90,9 @@ DROP TABLE IF EXISTS dept_emp;
 
 CREATE TABLE dept_emp
 (
-	employee_no		INT		REFERENCES employees(employee_no),
-	department_id 	CHAR(5) REFERENCES departments(department_id)
+	employee_no		INT		REFERENCES employee(employee_no),
+	department_id 	CHAR(5) REFERENCES department(department_id),
+	PRIMARY KEY(employee_no, department_id)
 );
 --------------------------------------------------------------------------
 -- SELECT * FROM dept_emp;
@@ -101,13 +103,13 @@ CREATE TABLE dept_emp
 --    employee number
 -- set the foreign key and primary key relationships accordingly
 --------------------------------------------------------------------------	
-DROP TABLE IF EXISTS emp_salaries;
+DROP TABLE IF EXISTS emp_salary;
 
-CREATE TABLE emp_salaries
+CREATE TABLE emp_salary
 (
-	employee_no		INT		PRIMARY KEY		REFERENCES employees(employee_no),
+	employee_no		INT		PRIMARY KEY		REFERENCES employee(employee_no),
 	emp_salary		INT
 );
 --------------------------------------------------------------------------
--- SELECT * FROM emp_salaries;
+-- SELECT * FROM emp_salary;
 --------------------------------------------------------------------------
