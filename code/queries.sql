@@ -42,7 +42,7 @@ LEFT OUTER JOIN departments d
 LEFT OUTER JOIN employees e
 	ON dm.employee_no = e.employee_no
 ORDER BY
-	d.department_id;
+	d.department_name;
 
 -- 	Select the employee number, last name, first name, and department of each employee, ordered by employee number
 --Below query retrieves last name, first name and department name for each and every employee.
@@ -116,7 +116,7 @@ ORDER BY
 	e.employee_no;
 
 -- 	Count the number of employees, grouped by last name
---Below query retrieves the counts of employees sharing each last name in Descending order.
+--Below query retrieves the counts of employees sharing last name in Descending order.
 SELECT
 	last_name as "last name",
 	count(employee_no) as "employee_count"
