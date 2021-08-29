@@ -4,13 +4,21 @@ This is analysis done on the employees database of the company Pewlett Hackard. 
 
 As part of this analysis, I have created 6 new tables:   
 3 master tables
-- employee - Holds the list of employees and employee infomration like title, date of birth, hire date, etc 
-- title - Holds the list of titles in the company and the corresponding codes.
-- department
+- Employee : Holds the list of employees and employee infomration like title, date of birth, hire date, etc.
+- Title : Holds the list of titles in the company and the corresponding codes.
+- Department : Holds the list of departments in the company and the department IDs.
 
-3 fact tables (department )
+3 fact tables
+ - Employee Salary : Holds the employee's salary data.
+ - Department Employee : Holds the list of employees of each department.
+ - Department Manager : Holds the managers of each department.
 
 To access the data from jupyter notebook, one needs configure username and password in a "config.py" file and save it in the folder "code". Just add 2 lines as below:  
 
     username='username'  
     password='password'
+
+Based on the analysis done as part of Jupyter notebook, we can see 
+
+- Most common salary range of employees to be between 40,000 USD and 50,000 USD.
+- there are 7 job titles in the company with the average salary of Staff and Senior Staff being almost same.
