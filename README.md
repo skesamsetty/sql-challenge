@@ -13,7 +13,7 @@ As part of this analysis, I have created 6 new tables:
  - Department Employee : Holds the list of employees of each department.
  - Department Manager : Holds the managers of each department.
 
-To access the data from jupyter notebook, one needs configure username and password in a "config.py" file and save it in the folder "code". Just add 2 lines as below:  
+To access the data from jupyter notebook, one needs configure username and password in a "config.py" file and save it in the folder "code". Just add 2 lines as below to the config.py file:  
 
     username='username'  
     password='password'
