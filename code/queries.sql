@@ -7,8 +7,8 @@ SELECT
 	e.sex,
 	s.emp_salary 	as "salary"
 FROM
-	employees e
-LEFT OUTER JOIN emp_salaries s
+	employee e
+LEFT OUTER JOIN emp_salary s
 	ON e.employee_no = s.employee_no
 ORDER BY
 	e.employee_no;
@@ -21,7 +21,7 @@ SELECT
 	last_name 	as "last name",
 	hire_date	as "hiring date"
 FROM
-	employees
+	employee
 WHERE
 	EXTRACT('year' FROM hire_date) = '1986'
 ORDER BY
@@ -37,9 +37,9 @@ SELECT
 	e.first_name		as "manager first name"
 FROM
 	dept_manager dm
-LEFT OUTER JOIN departments d
+LEFT OUTER JOIN department d
 	ON dm.department_id = d.department_id
-LEFT OUTER JOIN employees e
+LEFT OUTER JOIN employee e
 	ON dm.employee_no = e.employee_no
 ORDER BY
 	d.department_name;
@@ -53,10 +53,10 @@ SELECT
 	d.department_name 	as "department",
 	de.department_id	as "department number"
 FROM
-	employees e
+	employee e
 LEFT OUTER JOIN dept_emp de
 	ON e.employee_no = de.employee_no
-LEFT OUTER JOIN departments d
+LEFT OUTER JOIN department d
 	ON de.department_id = d.department_id
 ORDER BY
 	e.employee_no;
@@ -70,7 +70,7 @@ SELECT
 	date_of_birth	as "birth date",
 	sex				
 FROM
-	employees
+	employee
 WHERE
 	first_name = 'Hercules'
 	and last_name like 'B%'
@@ -86,10 +86,10 @@ SELECT
 	d.department_name 	as "department",
 	de.department_id	as "department number"
 FROM
-	employees e
+	employee e
 LEFT OUTER JOIN dept_emp de
 	ON e.employee_no = de.employee_no
-LEFT OUTER JOIN departments d
+LEFT OUTER JOIN department d
 	ON de.department_id = d.department_id
 WHERE
 	d.department_name = 'Sales'
@@ -105,10 +105,10 @@ SELECT
 	d.department_name 	as "department",
 	de.department_id	as "department number"
 FROM
-	employees e
+	employee e
 LEFT OUTER JOIN dept_emp de
 	ON e.employee_no = de.employee_no
-LEFT OUTER JOIN departments d
+LEFT OUTER JOIN department d
 	ON de.department_id = d.department_id
 WHERE
 	d.department_name IN ('Sales', 'Development')
@@ -121,11 +121,8 @@ SELECT
 	last_name as "last name",
 	count(employee_no) as "employee_count"
 FROM
-	employees
+	employee
 GROUP BY
 	last_name
 ORDER BY
 	employee_count DESC;
-	
-SELECT * FROM employees 
-	ORDER BY hire_date desc
